@@ -1,0 +1,27 @@
+{
+  "name": "serverless-typescript-facebook-bot",
+  "version": "0.0.1",
+  "description": "Serverless - Facebook Bot",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "aws-lambda": "^0.1.2",
+    "aws-sdk": "^2.177.0",
+    "lodash": "^4.17.4",
+    "request": "2.79.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.92",
+    "@types/aws-lambda": "0.0.22",
+    "@types/node": "^8.0.57",
+    "serverless-webpack": "^4.0.0",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0"
+  },
+  "author": "Mario Gualtieri",
+  "license": "MIT"
+}

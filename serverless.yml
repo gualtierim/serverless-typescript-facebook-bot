@@ -1,0 +1,31 @@
+service:
+  name: FacebookBot
+
+plugins:
+  - serverless-webpack
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs6.10
+  environment:
+    FB_ACCESS_TOKEN: ${env:FB_ACCESS_TOKEN}
+    FB_VERIFY_TOKEN: ${env:FB_VERIFY_TOKEN}
+    API_VERSION: ${opt:version, env:VERSION}
+
+functions:
+  fb_processMessage:
+    name: ${self:service}-${self:provider.stage}-${self:provider.environment.API_VERSION}-processMessage
+    handler: handler.processMessage
+    events:
+      - http:
+          path: ${self:provider.environment.API_VERSION}/webhook
+          method: post
+          cors: true
+  fb_verifyWebHook:
+    name: ${self:service}-${self:provider.stage}-${self:provider.environment.API_VERSION}-verifyWebHook
+    handler: handler.verifyWebHook
+    events:
+      - http:
+          path: ${self:provider.environment.API_VERSION}/webhook
+          method: get
+          cors: true
