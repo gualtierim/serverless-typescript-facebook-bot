@@ -2,15 +2,13 @@ import {APIGatewayEvent, Callback, Context, Handler} from "aws-lambda";
 import {FBProcess} from "./scripts/handlers/FBProcess";
 
 export const processMessage: Handler = async (event: APIGatewayEvent, context: Context, cb: Callback) => {
-    console.log(event);
-
     await new FBProcess().process(JSON.parse(event.body)['entry'][0]['messaging'][0]['sender']['id']);
     cb(null, {
         statusCode: 200,
         body: JSON.stringify({
             message: 'Response sent',
-            input: event,
-        }),
+            input: event
+        })
     });
 };
 
