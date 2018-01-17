@@ -1,5 +1,7 @@
 service:
   name: FacebookBot
+package:
+  individually: true
 
 plugins:
   - serverless-webpack
